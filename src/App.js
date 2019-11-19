@@ -1,4 +1,4 @@
-//import packages
+// import packages
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -41,10 +41,10 @@ class App extends Component {
         <div className="container">
           <SearchForm />
           <Nav />
-          <Route exact path="/" component={ PhotoContainer } />
-          <Route path="/surfing" component={ PhotoContainer } />
-          <Route path="/skiing" component={ PhotoContainer } />
-          <Route path="/golf" component={ PhotoContainer } />
+          <Route exact path="/" render={ () => <PhotoContainer /> } />
+          <Route path="/surfing" render={ () => <PhotoContainer title='surfing' /> } />
+          <Route path="/skiing" render={ () => <PhotoContainer title='skiing' /> } />
+          <Route path="/golf" render={ () => <PhotoContainer title='golf' /> } />
         </div>
       </BrowserRouter>
     );
