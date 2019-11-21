@@ -36,14 +36,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.photoArray);
     return (
       <BrowserRouter>
         <div className="container">
           <SearchForm />
           <Nav />
           <Switch>
-            <Route exact path="/" render={ () => <PhotoContainer /> } />
+            <Route exact path="/" render={ () => <PhotoContainer data={ this.state.photoArray } /> } />
             <Route path="/surfing" render={ () => <PhotoContainer title='surfing' /> } />
             <Route path="/skiing" render={ () => <PhotoContainer title='skiing' /> } />
             <Route path="/golf" render={ () => <PhotoContainer title='golf' /> } />
