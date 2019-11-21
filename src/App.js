@@ -23,7 +23,7 @@ class App extends Component {
       .then(response => {
         // handle success
         this.setState({
-          photoArray: response.data.photos
+          photoArray: response.data.photos.photo
         });
       })
       .catch(error => {
