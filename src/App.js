@@ -15,6 +15,7 @@ class App extends Component {
     super();
     this.state = {
       photoArray: [],
+      title: '',
       loading: true
     };
   }
@@ -29,6 +30,7 @@ class App extends Component {
       // handle success
       this.setState({
         photoArray: response.data.photos.photo,
+        title: query,
         loading: false
       });
     })
@@ -48,7 +50,7 @@ class App extends Component {
           <SearchForm onSearch={ this.performSearch } />
           <Nav />
           <Switch>
-            <Route exact path="/" render={ () => <PhotoContainer data={ this.state.photoArray } /> } />
+            <Route exact path="/" render={ () => <PhotoContainer title={ this.state.title } data={ this.state.photoArray } /> } />
             <Route path="/surfing" render={ () => <PhotoContainer title='surfing' /> } />
             <Route path="/skiing" render={ () => <PhotoContainer title='skiing' /> } />
             <Route path="/skateboarding" render={ () => <PhotoContainer title='skateboarding' /> } />
