@@ -14,38 +14,44 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      photoArray: []
+      photoArray: [],
+      loading: true
     };
   }
 
   componentDidMount() {
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=beach&safe_search=1&in_gallery=&per_page=24&format=json&nojsoncallback=1`)
-      .then(response => {
-        // handle success
-        this.setState({
-          photoArray: response.data.photos.photo
-        });
-      })
-      .catch(error => {
-        // handle error
-        console.log('Error fetching and parsing data', error);
-      })
-      .finally(function () {
-        // always executed
+    this.performSearch();
+  }
+
+  performSearch(query = "dogs surfing") {
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&safe_search=1&in_gallery=&per_page=24&format=json&nojsoncallback=1`)
+    .then(response => {
+      // handle success
+      this.setState({
+        photoArray: response.data.photos.photo,
+        loading: false
       });
+    })
+    .catch(error => {
+      // handle error
+      console.log('Error fetching and parsing data', error);
+    })
+    .finally(function () {
+      // always executed
+    });
   }
 
   render() {
     return (
       <BrowserRouter>
         <div className="container">
-          <SearchForm />
+          <SearchForm onSearch={ this.performSearch } />
           <Nav />
           <Switch>
             <Route exact path="/" render={ () => <PhotoContainer data={ this.state.photoArray } /> } />
             <Route path="/surfing" render={ () => <PhotoContainer title='surfing' /> } />
             <Route path="/skiing" render={ () => <PhotoContainer title='skiing' /> } />
-            <Route path="/golf" render={ () => <PhotoContainer title='golf' /> } />
+            <Route path="/skateboarding" render={ () => <PhotoContainer title='skateboarding' /> } />
             <Route component={ NotFound } />
           </Switch>
         </div>
