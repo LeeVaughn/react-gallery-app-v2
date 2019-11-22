@@ -51,9 +51,10 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/" render={ () => <PhotoContainer title={ this.state.title } data={ this.state.photoArray } /> } />
-            <Route path="/surfing" render={ () => <PhotoContainer title='surfing' /> } />
-            <Route path="/skiing" render={ () => <PhotoContainer title='skiing' /> } />
-            <Route path="/skateboarding" render={ () => <PhotoContainer title='skateboarding' /> } />
+            <Route path="/surfing" render={ () => <PhotoContainer title='surfing' data={ this.state.photoArray } /> } />
+            <Route path="/skiing" render={ () => <PhotoContainer title='skiing' data={ this.state.photoArray } /> } />
+            <Route path="/skateboarding" render={ () => <PhotoContainer title='skateboarding' data={ this.state.photoArray } /> } />
+            <Route exact path="/search/:query" render={ () => <PhotoContainer title={ this.state.title } data={ this.state.photoArray } /> } />
             <Route component={ NotFound } />
           </Switch>
         </div>
