@@ -47,8 +47,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="container">
-          <SearchForm onSearch={ this.performSearch } />
-          <Nav />
+          <SearchForm performSearch={ this.performSearch.bind(this) } />
+          <Nav performSearch={ this.performSearch.bind(this) } />
           <Switch>
             <Route exact path="/" render={ () => <PhotoContainer title={ this.state.title } data={ this.state.photoArray } /> } />
             <Route path="/surfing" render={ () => <PhotoContainer title='surfing' data={ this.state.photoArray } /> } />
