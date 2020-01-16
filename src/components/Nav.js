@@ -13,7 +13,7 @@ class Nav extends Component {
         <ul>
           <li><NavLink to="/surfing" onClick={ () => this.search("surfing") }>Surfing</NavLink></li>
           <li><NavLink to="/skiing" onClick={ () => this.search("skiing") }>Skiing</NavLink></li>
-          <li><NavLink to="/Skateboarding" onClick={ () => this.search("skateboarding") }>Skateboarding</NavLink></li>
+          <li><NavLink to="/skateboarding" onClick={ () => this.search("skateboarding") }>Skateboarding</NavLink></li>
         </ul>
       </nav>
     );
